@@ -10,10 +10,18 @@ with open('reviews.txt', 'r') as f:
 		count += 1         # 每跑一次for迴圈就計數一次
 		if count % 1000 == 0: # 1000除以count所得之餘數 == 0(即count是1000的倍數。例如7 % 3 == 1 )。不要忘記指令後要加冒號。
 			print(len(data))   # 如果此寫在for回圈內，代表每讀一筆留言就印1次單位長度，1百萬筆留言就會印1百萬次單位長度，程式會跑很慢。
-print('檔案讀取完了，組共有', len(data), '筆留言')
+print('檔案讀取完了，組共有', len(data), '筆留言') #如果此寫在for迴圈裏面，無法只印一次，會一直印出
 
-# 求每一筆留言的平均字數
+# 求每一筆留言的平均字母數
 sum_word = 0
 for word in data:  # 為什麼不是in f或 in line? 因為我們要讀取f裡的每筆留言，而每筆留言又存進了data空清單內，故現在要求data空清單內每筆留言的字數
 	sum_word += len(word)  # sum_word = sum_word + len (word)。不可以寫sum_word += word，因為要求word的長度。
-print('每筆留言的平均字數為', sum_word / len(data),'個字')	
+print('每筆留言的平均字數為', sum_word / len(data),'個字')	 # 如果此寫在for迴圈裏面，無法只印一次，會一直印出
+
+# 篩選出有幾筆小餘100個字母數的留言
+new = []
+for word in data:
+	if len(word) < 100:  # 篩選小於100個字母數的留言
+		new.append(word) # 將篩選出來的留言存進new空清單中，這樣才能印出清單內有幾筆小餘100個字母數的留言
+print('一共有', len(new), '筆小於100個字的留言') # 如果此寫在for迴圈裏面，無法只印一次，會一直印出
+print(new[0]) # 印出第一筆小餘100個字母數的留言
