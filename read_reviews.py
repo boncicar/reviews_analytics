@@ -5,8 +5,4 @@ data = []
 with open('reviews.txt', 'r') as f:
 	for line in f:
 		data.append(line)  # 每一行加進data空清單裡面 
-print(len(data))           # 印出reviews.txt有幾行留言(一行會有一筆留言)。print(data)會印出全部的留言
-print(data[0])             # 印出第一筆留言
-print('--------------')    # 印出分隔線
-print(data[1])             # 印出第二筆留言
-
+		print(len(data))   # 如果此寫在for回圈內，代表每讀一筆留言就印1次單位長度，1百萬筆留言就會印1百萬次單位長度，程式會跑很慢。
